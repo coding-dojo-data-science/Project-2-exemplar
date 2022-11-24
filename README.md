@@ -53,3 +53,37 @@ Top Features:
 - Older patients have much higher avg_glucose_levels compared to younger patients. 
 
 - High BMI and high glucose levels surprisingly have a lower impact on stroke outcome as originally thought. 
+
+### Model Evaluation
+
+During model evaluation, reducing the count of type 2 errors (false negatives) will be the priority. 
+Type 2 Error (False Negative): If a model predicts that an individual will not have a stroke outcome, but in reality they will, this is a false negative. Ideally, we will want to minimize the number of false negatives we experience even if that lowers the overall accuracy of the model. 
+
+Model	|Accuracy Score|	Precision Score	|Recall Score|	F1 Score|	ROC	|Execution Time
+---|---|----|----|----|----|---
+Decision Tree|	0.881754	|0.161905|	0.2125	|0.183784	|0.569491	|	0.20
+Random Forest|	0.911511	|0.097561	|0.0500	|0.066116	|0.509545|	1.01
+Logistic Regression|	0.745497|	0.162534|	0.7375|	0.266366|	0.741766	|	0.21
+KNeighbors|	0.830070|	0.145078	|0.3500	|0.205128|	0.606078	|	0.53
+ADA Boost|	0.805012|	0.171206|	0.5500	|0.261128|	0.686028	|	0.57
+Light GBM|	0.907596|	0.068182	|0.0375|	0.048387|	0.501624	|	0.67
+XGBoost|	0.861394|	0.183007	|0.3500	|0.240343|	0.622786	|	0.76
+Gradient Boosting	|0.870008	|0.192857	|0.3375|	0.245455|	0.621549	|	1.59
+Logistic Regression Tuned|	0.736100	|0.159151	|0.7500	|0.262582|	0.742586|	23.97
+Logistic Regression Tuned|	0.736100|	0.159151	|0.7500	|0.262582|	0.742586	|20.55
+ADA Boost Tuned	|0.775255|	0.177570|	0.7125|	0.284289|	0.745974	|	208.06
+XGBoost Tuned|	0.740016|	0.173575|	0.8375	|0.287554|	0.785500|	191.41
+Logistic Regression PCA Tuned|	0.747847|	0.163889|	0.7375	|0.268182|	0.743019|	17.39
+ADA Boost PCA Tuned|	0.751762|	0.152493	|0.6500|	0.247031	|0.704282	|	280.25
+XGBoost PCA Tuned	|0.740016|	0.170157|	0.8125|	0.281385	|0.773836	|	207.15
+
+Recall Score and ROC will be the primary scores that will impact the recommended model. 
+
+### Recommended Model
+
+**The Tuned XGBoost Model** is recommended due to it have the highest recall across all of the models while maintaining a similar accuracy as other models with higher recall scores. 
+This model will lead to overdiagnosis of stroke outcomes, however, the downside to this is less than if the model missed stroke diagnosis's. 
+
+#### Stroke Detection
+
+The primary predictor to a stroke will be the patient's age. Secondary concerns include: heart disease, glucose levels, and BMI. Patients that have heart concerns and/or are overweight or obese, especially if the patient is older, should visit a doctor to help guide them towards healthier options in order to reduce the risk of stroke as much as possible. 
