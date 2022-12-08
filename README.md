@@ -39,20 +39,13 @@ Top Features:
 - Ever Married
 
 ### Explanatory Data Analysis
-![image](https://user-images.githubusercontent.com/18369971/200953273-2cee6eab-aa38-4617-9bca-07542a1e2b17.png)
+![image](https://user-images.githubusercontent.com/18369971/206331916-715dcac5-e364-432b-8b44-0b3fa46c2055.png)
 
-- Normalized distribution shows the trend that older patients are more likely to have a stroke than younger patients.
+![image](https://user-images.githubusercontent.com/18369971/206331751-565b72cb-202e-4282-ae99-a43b792bdbd7.png)
 
-![image](https://user-images.githubusercontent.com/18369971/200953803-c858831b-b449-4ef4-9c9e-f684e839de66.png)
+![image](https://user-images.githubusercontent.com/18369971/206331805-99908fbb-7773-4196-ba70-3b57b9d0ba65.png)
 
-- The average BMI in the dataset is 29. A majority of the dataset contains patients that are considered 'Overweight' or 'Obese'. 
-- BMI and age has a slightly positive trend.
-- Age is clearly a determining factor in stroke outcome with most strokes occurring over the age of 40. 
-
-![image](https://user-images.githubusercontent.com/18369971/200954022-44c57b22-4046-4325-be86-d7b94fdc3587.png)
-- Older patients have much higher avg_glucose_levels compared to younger patients. 
-
-- High BMI and high glucose levels surprisingly have a lower impact on stroke outcome as originally thought. 
+![image](https://user-images.githubusercontent.com/18369971/206331964-82f0b426-62b3-48a7-b7c2-acdedd6e925d.png)
 
 ### Model Evaluation
 
@@ -79,11 +72,26 @@ XGBoost PCA Tuned	|0.740016|	0.170157|	0.8125|	0.281385	|0.773836	|	207.15
 
 Recall Score and ROC will be the primary scores that will impact the recommended model. 
 
+- Charting all models based on recall score shows the following:
+![image](https://user-images.githubusercontent.com/18369971/206332020-90cd9d45-76f5-4728-8a68-7584423054d6.png)
+
 ### Recommended Model
 
 **The Tuned XGBoost Model** is recommended due to it have the highest recall across all of the models while maintaining a similar accuracy as other models with higher recall scores. 
 This model will lead to overdiagnosis of stroke outcomes, however, the downside to this is less than if the model missed stroke diagnosis's. 
 
+![image](https://user-images.githubusercontent.com/18369971/206332078-f2492698-db8e-40eb-b126-27f18a25a4b4.png)
+
+- Minimizing the false negatives will be the most beneficial for the insurance company.
+- Incorrectly predicting patients will not have a stroke when they actual do (false negative) can be costly to the company and does not provide adequate resources for preventative care to patients. 
+- The downside to this model is the high rate of false positives. However, providing additional preventative care to patients that are likely not going to have a stroke will still be more cost effective than having a higher false negative rate.  
+
 #### Stroke Detection
 
 The primary predictor to a stroke will be the patient's age. Secondary concerns include: heart disease, glucose levels, and BMI. Patients that have heart concerns and/or are overweight or obese, especially if the patient is older, should visit a doctor to help guide them towards healthier options in order to reduce the risk of stroke as much as possible. 
+
+### Recommendations
+- The tuned XGBoost model can lead to catching at risk patients early to provide the necessary preventative care and/or treatment.
+- False negatives are still a risk in the model and some predictions may require mild manual review in order to potentially catch any concerns not captured by the predictive model. 
+- Aging patients, especially those with heart disease and/or hypertension, should seek medical care to get the appropriate preventative care with a medical professional. 
+
